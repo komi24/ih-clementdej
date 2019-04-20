@@ -4,6 +4,7 @@ const User = require('../models/User');
 const Project = require('../models/Project');
 const Calendar = require('../models/Calendar');
 const bcrypt = require("bcrypt");
+const _ = require("lodash")
 
 const bcryptSalt = 10;
 
@@ -32,6 +33,26 @@ router.get('/', isAuthenticated, (req, res, next) => {
   .then(projects => {
       res.render('home', {projects});
     })
+});
+
+router.get('/api/dashboard', (req, res, next) => {
+  Calendar.find()
+  .populate('user')
+  .populate('project')
+  .then(cal => {
+    cal = _.groupBy(cal, o => o.user.username)
+    res.send({cal});
+  })
+});
+
+router.get('/dashboard', (req, res, next) => {
+  Calendar.find()
+  .populate('user')
+  .populate('project')
+  .then(cal => {
+    cal = _.groupBy(cal, o => o.user.username)
+    res.render('dashboard', {cal});
+  })
 });
 
 

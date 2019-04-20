@@ -1,0 +1,24 @@
+<h1>Dashboard</h1>
+
+<div id="myTable">
+</div>
+
+<ul>
+{{#each cal}}
+<li>{{@key}} -- 
+{{#each this}}
+	sem : {{week}}, time : {{time}}, projet : {{project.title}} --
+{{/each}}
+</li>
+{{/each}}
+</ul>
+
+<script
+src="https://code.jquery.com/jquery-3.4.0.js"
+integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js"></script>
+<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+<script src="/javascripts/tables.js"></script>
