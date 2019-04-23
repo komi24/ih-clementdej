@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('IronGenerator JS imported successfully!');
 
   // promise de tout recupérer 
-  Promise.all([axios.get('/api/users'), axios.get('/api/dashboard')])
+  Promise.all([axios.get('/api/users'), axios.get('/api/projects'), axios.get('/api/dashboard')])
 
-    .then(([user, cal]) => {
+    .then(([user, project, cal]) => {
       var dataSet = [];
       let users = user.data.map(e => e.username)
       console.log('array users', users)
@@ -58,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
       })
 
     })
-
 
 
 

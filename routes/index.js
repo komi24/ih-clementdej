@@ -91,6 +91,19 @@ router.post('/users/new', (req, res, next) => {
     })
 });
 
+// Project 
+
+router.get('/api/projects', isAuthenticated, isAdmin, (req, res, next) => {
+  Project.find()
+    .then(project => {
+      res.send(project);
+    })
+});
+
+
+
+
+
 
 //DashBoard 
 router.get('/admin/dash1', isAuthenticated, isAdmin, (req, res, next) => {
