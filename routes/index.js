@@ -93,9 +93,16 @@ router.post('/users/new', (req, res, next) => {
 
 
 //DashBoard 
-router.get('/admin/dashboard', isAuthenticated, isAdmin, (req, res, next) => {
-  res.render('dashboard/dashboard')
+router.get('/admin/dash1', isAuthenticated, isAdmin, (req, res, next) => {
+  res.render('dashboard/dash1')
 })
+
+
+router.get('/admin/dash2', isAuthenticated, isAdmin, (req, res, next) => {
+  res.render('dashboard/dash2')
+})
+
+
 router.get('/api/dashboard', isAuthenticated, isAdmin, (req, res, next) => {
   Calendar.find()
     .populate('user')
@@ -104,6 +111,9 @@ router.get('/api/dashboard', isAuthenticated, isAdmin, (req, res, next) => {
       res.send({ calendar });
     })
 });
+
+
+
 
 
 module.exports = router;

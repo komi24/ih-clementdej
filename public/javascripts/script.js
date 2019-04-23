@@ -1,10 +1,10 @@
+// mise en place de la strtucture , on crée une array avec 52 semaines 
 let semaines = [];
-for (let i = 0; i < 50; i++) {
+for (let i = 0; i < 52; i++) {
   semaines.push(i);
 }
 
-
-
+// on crée les colonnes du tableaux 
 let columns = [{ title: "Dev" }]
 for (let i = 1; i < semaines.length; i++) {
   columns.push({ title: `Week ${i}` })
@@ -18,13 +18,10 @@ for (let i = 1; i < semaines.length; i++) {
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log('IronGenerator JS imported successfully!');
-
-
+  // promise de tout recupérer 
   Promise.all([axios.get('/api/users'), axios.get('/api/dashboard')])
 
     .then(([user, cal]) => {
-      // var dataSet = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-      // ];
       var dataSet = [];
       let users = user.data.map(e => e.username)
       console.log('array users', users)
@@ -41,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(oneUser)
 
         // Loop pour chaque week ajouter un string à DATASET [USER][0, .... -> 50]
-        for (let i = 1; i < 51; i++) {
+        for (let i = 1; i < 53; i++) {
 
           let oneweek = oneUser.filter(e => e.week === i)
 
@@ -50,22 +47,13 @@ document.addEventListener('DOMContentLoaded', () => {
             oneweek.forEach(e => times += e.time)
             console.log('times ', times)
           }
-          dataSet[index][i] = times.toFixed(2)
-
+          dataSet[index][i] = times.toFixed(2) + ' H'
         }
 
       }
 
       console.log(dataSet);
-
-
-
-
-
-
-
-
-      $('#example').DataTable({
+      $('#dash1').DataTable({
         data: dataSet,
         columns: columns,
       })
