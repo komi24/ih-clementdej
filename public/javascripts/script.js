@@ -49,8 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
           if (oneweek.length > 0) {
             oneweek.forEach(e => times += e.time)
             console.log('times ', times)
-            dataSet[index][i] = times.toFixed(2)
           }
+          dataSet[index][i] = times.toFixed(2)
 
         }
 
